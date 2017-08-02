@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="全选">
+	<input type="button" value="反选">
+	麻烦腿抬抬:<input type="checkbox" disabled><br>
+	啤酒:<input type="checkbox"><br>
+	饮料:<input type="checkbox"><br>
+	矿泉水:<input type="checkbox"><br>
+	花生:<input type="checkbox"><br>
+	瓜子:<input type="checkbox"><br>
+	八宝粥:<input type="checkbox"><br>
+</body>
+<script>
+	var input = document.getElementsByTagName('input')
+	input[0].onclick = function(){
+		for (var i = 2; i < input.length; i++) {
+			input[i].checked = true;
+		};
+	};
+	input[1].onclick = function(){
+		input[2].checked =true;
+		for (var i = 3; i < input.length; i++) {			
+			if (input[i].checked == true) {
+				input[i].checked =false;
+				input[2].checked =false;
+			}else{
+				input[i].checked =true;
+			};
+		};
+	};
+	for (var i = 3; i < input.length; i++) {
+		input[i].onclick = function(){
+			input[2].checked =true;
+			for (var i = 3; i < input.length; i++) {
+				if (input[i].checked == false) {
+					input[2].checked =false;
+				};
+			};			
+		};			
+			
+	};
+
+</script>
+</html>

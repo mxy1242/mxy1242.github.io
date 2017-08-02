@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.div1{
+			width: 300px;
+			height: 200px;
+			position: relative;
+			overflow: hidden;
+			margin: 0 auto;
+			border: 1px solid black;
+
+		}
+		div ul{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+			width: 1500px;
+			height: 200px;
+			position: absolute;
+
+		}
+		ul li{
+			width: 300px;
+			height: 200px;
+			font-size: 50px;
+			line-height: 200px;
+			float: left;
+			text-align: center;
+			background: yellow;
+			/*color: red;*/
+
+
+		}
+		.div2{
+			position: absolute;
+			bottom: 10px;
+			margin-left: 100px;
+		}
+		p{
+			margin: 0px;
+			padding: 0px;
+			width: 10px;
+			height: 10px;
+			border: 1px solid black;
+			border-radius: 50%;
+			float: left;
+			margin: 5px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<ul>
+			<li style="background:yellow">我是第一个</li>
+			<li style="background:blue">我是第二个</li>
+			<li style="background:lightblue">我是第三个</li>
+			<li style="background:white">我是第四个</li>
+			<li style="background:yellow">我是第一个</li>
+		</ul>
+		<div class="div2">
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			
+		</div>
+	</div>
+	
+</body>
+<script>
+	var ul = document.getElementsByTagName('ul')[0];
+	var p = document.getElementsByTagName('p')
+	var timer = null;
+	var num = 0;
+	timer = setInterval(function(){
+		num++
+		ul.style.left = -num + "px";
+		if (num>=1200) {
+			num = 0;
+		};
+		for (var i = 0; i < p.length; i++) {
+			p[i].style.background = ""	;		
+		};
+		p[parseInt(num/300)].style.background ="red";
+
+	},10);
+
+	for (var i = 0; i < p.length; i++) {
+		p[i].index = i;
+		p[i].onclick = function(){
+			num = this.index*300;
+			for (var i = 0; i < p.length; i++) {
+				p[i].style.background = "";			
+			};
+			p[parseInt(num/300)].style.background ="red";
+		};
+	};
+
+
+
+
+</script>
+</html>
